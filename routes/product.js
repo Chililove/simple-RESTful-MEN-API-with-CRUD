@@ -12,7 +12,12 @@ router.post("/", (req, res) => {
     .catch(error => { res.status(500).send({message: error.message });})
 });
 //READ ALL - GET
+router.get("/", (req, res) => {
 
+product.find()
+    .then(data => { res.send(data)})
+    .catch(error => { res.status(500).send({message: error.message });})
+});
 //READ SPECIFIC - GET
 
 // UPDATE - PUT 
