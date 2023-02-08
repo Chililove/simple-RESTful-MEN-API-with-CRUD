@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const product = require("../models/product");
+const product = require("../models/art");
 
 //CRUD
 
@@ -7,14 +7,14 @@ const product = require("../models/product");
 router.post("/", (req, res) => {
     data = req.body;
 
-    product.insertMany(data)
+    art.insertMany(data)
     .then(data => { res.send(data)})
     .catch(error => { res.status(500).send({message: error.message });})
 });
 //READ ALL - GET
 router.get("/", (req, res) => {
 
-product.find()
+art.find()
     .then(data => { res.send(data)})
     .catch(error => { res.status(500).send({message: error.message });})
 });
@@ -22,14 +22,14 @@ product.find()
  // READ all inStock products
  router.get("/inStock", (req, res) => {
 
-    product.find({inStock: true})
+    art.find({inStock: true})
         .then(data => { res.send(data)})
         .catch(error => { res.status(500).send({message: error.message });})
     });
 //READ SPECIFIC - GET
 router.get("/:id", (req, res) => {
 
-    product.findById(req.params.id)
+    art.findById(req.params.id)
         .then(data => { res.send(data)})
         .catch(error => { res.status(500).send({message: error.message });})
     });
@@ -40,7 +40,7 @@ router.put("/:id", (req, res) => {
 
     const id = req.params.id;
 
-    product.findByIdAndUpdate(id, req.body)
+    art.findByIdAndUpdate(id, req.body)
         .then(data => { 
             if(!data)
             {
@@ -60,7 +60,7 @@ router.delete("/:id", (req, res) => {
 
     const id = req.params.id;
 
-    product.findByIdAndDelete(id)
+    art.findByIdAndDelete(id)
         .then(data => { 
             if(!data)
             {
