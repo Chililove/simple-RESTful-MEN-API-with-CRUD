@@ -56,5 +56,23 @@ res.status(404).send({message: "Cannot update product with id=" + id + ". produc
 
 
 // DELETE - DELETE
+router.delete("/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    product.findByIdAndDelete(id)
+        .then(data => { 
+            if(!data)
+            {
+res.status(404).send({message: "Cannot delete product with id=" + id + ". product was not found"})
+            }
+            else 
+            {
+                    res.send({message: "product was succesfully deleted"})
+            }
+        })
+        .catch(error => { res.status(500).send({message: "Error deleting product with id=" + id });})
+    });
+
 
 module.exports = router;
