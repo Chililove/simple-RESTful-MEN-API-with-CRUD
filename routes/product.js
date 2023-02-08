@@ -3,7 +3,7 @@ const product = require("../models/product");
 
 //CRUD
 
-//CREATE - POST
+//CREATE - POST -- Working now
 router.post("/", (req, res) => {
     data = req.body;
 
