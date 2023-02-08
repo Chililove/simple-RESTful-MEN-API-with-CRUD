@@ -36,6 +36,24 @@ router.get("/:id", (req, res) => {
 
    
 // UPDATE - PUT 
+router.put("/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    product.findByIdAndUpdate(id, req.body)
+        .then(data => { 
+            if(!data)
+            {
+res.status(404).send({message: "Cannot update product with id=" + id + ". product was not found"})
+            }
+            else 
+            {
+                    res.send({message: "product was succesfully updated"})
+            }
+        })
+        .catch(error => { res.status(500).send({message: "Error updating product with id=" + id });})
+    });
+
 
 // DELETE - DELETE
 
