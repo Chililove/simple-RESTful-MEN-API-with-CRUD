@@ -18,8 +18,23 @@ product.find()
     .then(data => { res.send(data)})
     .catch(error => { res.status(500).send({message: error.message });})
 });
-//READ SPECIFIC - GET
 
+ // READ all inStock products
+ router.get("/inStock", (req, res) => {
+
+    product.find({inStock: true})
+        .then(data => { res.send(data)})
+        .catch(error => { res.status(500).send({message: error.message });})
+    });
+//READ SPECIFIC - GET
+router.get("/:id", (req, res) => {
+
+    product.findById(req.params.id)
+        .then(data => { res.send(data)})
+        .catch(error => { res.status(500).send({message: error.message });})
+    });
+
+   
 // UPDATE - PUT 
 
 // DELETE - DELETE
