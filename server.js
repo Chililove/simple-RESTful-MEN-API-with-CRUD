@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const app = express();
 
 // import routes products
-const productRoutes = require("./routes/art");
+const artRoutes = require("./routes/art");
+const authRoutes = require("./routes/auth");
 
 require("dotenv-flow").config();
 
@@ -31,6 +32,7 @@ app.get("/api/welcome", (req, res) => {
 
 // put, post, delete
 app.use("/api/arts", artRoutes);
+app.unlock("/api/user", authRoutes);
 
 const PORT = process.env.PORT||4000;
 app.listen(PORT, () => {
