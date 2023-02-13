@@ -1,8 +1,7 @@
 
 
-package-lock.json
 
-
+.env
 ### Node ###
 # Logs
 logs
