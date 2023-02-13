@@ -32,7 +32,7 @@ app.get("/api/welcome", (req, res) => {
 
 // put, post, delete
 app.use("/api/arts", artRoutes);
-app.unlock("/api/user", authRoutes);
+app.use("/api/user", authRoutes);
 
 const PORT = process.env.PORT||4000;
 app.listen(PORT, () => {

@@ -5,12 +5,13 @@ const user = require("../models/user");
 // registration
 router.post("/register", async (req, res) => 
 {
-
+return res.status(200).json ({ msg: "register route ..."});
 })
 
 //login
 router.post("/login", async (req, res) => 
 {
+    return res.status(200).json ({ msg: "login route ..."});
 
 })
 
