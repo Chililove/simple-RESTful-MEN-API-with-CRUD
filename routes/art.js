@@ -1,14 +1,15 @@
 const router = require("express").Router();
-const product = require("../models/art");
+const art = require("../models/art");
+const { verifyToken } = require("../validation");
 
 //CRUD
 
 //CREATE - POST -- Working now
-router.post("/", (req, res) => {
+router.post("/", verifyToken, (req, res) => {
     data = req.body;
 
     art.insertMany(data)
-    .then(data => { res.send(data)})
+    .then(data => { res.send(data); })
     .catch(error => { res.status(500).send({message: error.message });})
 });
 //READ ALL - GET
@@ -36,7 +37,7 @@ router.get("/:id", (req, res) => {
 
    
 // UPDATE - PUT 
-router.put("/:id", (req, res) => {
+router.put("/:id", verifyToken, (req, res) => {
 
     const id = req.params.id;
 
@@ -56,7 +57,7 @@ res.status(404).send({message: "Cannot update product with id=" + id + ". produc
 
 
 // DELETE - DELETE
-router.delete("/:id", (req, res) => {
+router.delete("/:id", verifyToken, (req, res) => {
 
     const id = req.params.id;
 
