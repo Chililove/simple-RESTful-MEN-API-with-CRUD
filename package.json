@@ -23,6 +23,8 @@
     "joi": "^17.7.1",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.0.1",
-    "mongoose": "^6.9.1"
+    "mongoose": "^6.9.1",
+    "swagger-ui-express": "^4.6.0",
+    "yamljs": "^0.3.0"
   }
 }
