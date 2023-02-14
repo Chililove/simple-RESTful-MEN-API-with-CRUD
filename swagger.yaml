@@ -16,7 +16,7 @@ components:
       name: auth-token
 
   schemas:
-    Product:
+    Art:
       type: object
       properties:
         id:
@@ -96,23 +96,23 @@ paths:
                   data:
                     type: string
 
-  /products:
+  /Arts:
     get:
-      summary: Retrieves a list of Products
-      description: Retrieves a list of products as JSON objects.
+      summary: Retrieves a list of Arts
+      description: Retrieves a list of Arts as JSON objects.
       responses:
         200:
-          description: A list of product JSON objects in an array.
+          description: A list of Art JSON objects in an array.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Product"
+                  $ref: "#/components/schemas/Art"
 
     post:
-      summary: Create a new Product
-      description: Create a new Product
+      summary: Create a new Art
+      description: Create a new Art
       security:
         - ApiKeyAuth: []
       requestBody:
@@ -120,20 +120,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Product"
+              $ref: "#/components/schemas/Art"
 
       responses:
         201:
-          description: Product created succesfully
+          description: Art created succesfully
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Product"
+                $ref: "#/components/schemas/Art"
 
-  /products/{id}:
+  /Arts/{id}:
     get:
-      summary: Specific Product
-      description: Retrieves a specific Product based on it id.
+      summary: Specific Art
+      description: Retrieves a specific Art based on it id.
       parameters:
         - in: path
           name: id
@@ -143,17 +143,17 @@ paths:
             type: string
       responses:
         200:
-          description: A Product in the format of a JSON object.
+          description: A Art in the format of a JSON object.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Product"
+                  $ref: "#/components/schemas/Art"
 
     put:
-      summary: Updates a specific Product
-      description: Updates a specific Product based on it id
+      summary: Updates a specific Art
+      description: Updates a specific Art based on it id
       security:
         - ApiKeyAuth: []
       parameters:
@@ -168,19 +168,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Product"
+              $ref: "#/components/schemas/Art"
 
       responses:
         201:
-          description: Product updated succesfully
+          description: Art updated succesfully
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Product"
+                $ref: "#/components/schemas/Art"
 
     delete:
-      summary: Deletes a specific Product
-      description: Deletes a specific Product based on it id
+      summary: Deletes a specific Art
+      description: Deletes a specific Art based on it id
       security:
         - ApiKeyAuth: []
       parameters:
@@ -193,8 +193,8 @@ paths:
 
       responses:
         201:
-          description: Product deleted succesfully
+          description: Art deleted succesfully
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Product"
+                $ref: "#/components/schemas/Art"
