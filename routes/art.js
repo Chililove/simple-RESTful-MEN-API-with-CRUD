@@ -3,7 +3,6 @@ const art = require("../models/art");
 const { verifyToken } = require("../validation");
 
 //CRUD
-
 //CREATE - POST -- Working now
 router.post("/", verifyToken, (req, res) => {
     data = req.body;

@@ -13,5 +13,5 @@ let artSchema = new Schema
 
 
 });
-
+// exports modules to be use outside of file
 module.exports = mongoose.model("art", artSchema);
