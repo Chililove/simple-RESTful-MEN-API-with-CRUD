@@ -35,7 +35,54 @@ router.get("/:id", (req, res) => {
         .catch(error => { res.status(500).send({message: error.message });})
     });
 
-   
+    //GET products/lt/100 greater than or less than (two params in this route :, )
+    // make this with big arrow not
+     router.get("/price/:operator/:price", (req, res) =>{
+
+    const operator = req.params.operator;
+    const price = req.params.price;
+/* tenary
+    filterexpress = operator == "gt" ? {$gte: price} : {$lte: price}
+*/
+        let filterExpress;
+
+    if(operator == "lt"){
+        filterExpress = { $lte: price }
+    }
+    else{
+        filterExpress = { $gte: price }
+
+    }
+    art.find({price: filterExpress})
+    .then(data => {
+        res.status(200)
+        .send(mapArray(data)) })
+        .catch(err => {
+            res.status(500).send({message: err.message})
+        })
+    });
+
+// refactored code ^ 
+    // route.get("/price/:operator/:price", (req, res) =>{
+
+    //         let filterExpress = {$gte: price}
+    
+    //     if(req.params.operator == "lt"){
+    //         filterExpress = { $lte: price }
+    //     }
+
+    //     art.find({price: filterExpress})
+    //     .then(data => {
+    //         res.status(200)
+    //         .send(mapArray(data)) })
+    //         .catch(err => {
+    //             res.status(500).send({message: err.message})
+    //         })
+    //     });
+
+
+    
+
 // UPDATE - PUT 
 router.put("/:id", verifyToken, (req, res) => {
 
