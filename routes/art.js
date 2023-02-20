@@ -15,14 +15,15 @@ router.post("/", verifyToken, (req, res) => {
 router.get("/", (req, res) => {
 
 art.find()
-    .then(data => { res.send(data)})
+    .then(data => { 
+        res.send(mapArray(data))})
     .catch(error => { res.status(500).send({message: error.message });})
 });
 
  // READ all inStock products
- router.get("/inStock", (req, res) => {
+ router.get("/inStock/:status", (req, res) => {
 
-    art.find({inStock: true})
+    art.find({inStock: req.params.status})
         .then(data => { res.send(data)})
         .catch(error => { res.status(500).send({message: error.message });})
     });
@@ -73,6 +74,26 @@ res.status(404).send({message: "Cannot delete product with id=" + id + ". produc
         })
         .catch(error => { res.status(500).send({message: "Error deleting product with id=" + id });})
     });
+
+    // w. søren live coding in class
+   function mapArray(inputArray){
+// this is a kind of loop too, like foreach - map creates a new array. (foreach modifies arrays)
+    let outputArray = inputArray.map(element => ({
+        id: element._id,
+        name: element.name,
+        description: element.description,
+        color: element.color,
+        size: element.size,
+        price: element.price,
+        inStock: element.inStock,  
+        // Adding uri for specific art, HATEOAS
+        uri:"/api/arts/" + element._id
+
+    }));
+
+    return outputArray;
+
+    }
 
 
 module.exports = router;
