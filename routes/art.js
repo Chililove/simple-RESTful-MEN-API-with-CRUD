@@ -21,9 +21,9 @@ art.find()
 });
 
  // READ all inStock products
- router.get("/inStock/:status", (req, res) => {
+ router.get("/inStock", (req, res) => { ///:status
 
-    art.find({inStock: req.params.status})
+    art.find({inStock:true }) //req.params.status
         .then(data => { res.send(data)})
         .catch(error => { res.status(500).send({message: error.message });})
     });
