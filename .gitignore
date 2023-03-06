@@ -2,6 +2,7 @@
 
 
 .env
+.launch.json
 ### Node ###
 # Logs
 logs
