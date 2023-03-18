@@ -87,23 +87,7 @@ router.get("/price/:operator/:price", (req, res) => {
         })
 });
 
-// refactored code ^ 
-// route.get("/price/:operator/:price", (req, res) =>{
 
-//         let filterExpress = {$gte: price}
-
-//     if(req.params.operator == "lt"){
-//         filterExpress = { $lte: price }
-//     }
-
-//     art.find({price: filterExpress})
-//     .then(data => {
-//         res.status(200)
-//         .send(mapArray(data)) })
-//         .catch(err => {
-//             res.status(500).send({message: err.message})
-//         })
-//     });
 
 
 

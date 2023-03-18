@@ -28,5 +28,10 @@
     "nodemon": "^2.0.20",
     "swagger-ui-express": "^4.6.0",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.2.0"
   }
 }
