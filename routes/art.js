@@ -5,11 +5,13 @@ const { verifyToken } = require("../validation");
 
 //CRUD
 //CREATE - POST -- Working now
-router.post("/", verifyToken, (req, res) => {
+//router.post("/", verifyToken, (req, res) => {
+    router.post("/", (req, res) => {
+
     data = req.body;
 
     art.insertMany(data)
-        .then(data => { res.send(data); })
+        .then(data => { res.status(201).send(data); })
         .catch(error => { res.status(500).send({ message: error.message }); })
 });
 //READ ALL - GET
